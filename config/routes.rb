@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  resources :groups do
-    resources :messages
+  concern :api_base do
+    resources :groups do
+      resources :messages
+    end
+  end
+
+  namespace :v1 do
+    concerns :api_base
   end
 end
